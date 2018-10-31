@@ -50,8 +50,7 @@ class SignUpActivity : AppCompatActivity() {
 
             selectphoto_imageview_register.setImageBitmap(bitmap)
             button_selectphoto_register.alpha = 0f
-//            val bitmapDrawable = BitmapDrawable(bitmap)
-//            button_selectphoto_register.setBackgroundDrawable(bitmapDrawable)
+
 
 
         }
