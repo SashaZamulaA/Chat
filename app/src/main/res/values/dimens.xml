@@ -2,4 +2,5 @@
 <resources>
     <dimen name="button_for_photo">150dp</dimen>
     <dimen name="image_persone">60dp</dimen>
+    <dimen name="hight_row">120dp</dimen>
 </resources>

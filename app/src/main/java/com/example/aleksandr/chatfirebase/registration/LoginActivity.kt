@@ -1,11 +1,12 @@
-package com.example.aleksandr.chatfirebase
+package com.example.aleksandr.chatfirebase.registration
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
+import com.example.aleksandr.chatfirebase.messages.LatestMessagesActivity
+import com.example.aleksandr.chatfirebase.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 

@@ -1,8 +1,11 @@
-package com.example.aleksandr.chatfirebase
+package com.example.aleksandr.chatfirebase.messages
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.example.aleksandr.chatfirebase.R
+import com.example.aleksandr.chatfirebase.models.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -28,6 +31,9 @@ class NewMessageActivity : AppCompatActivity() {
 
         fetchUsers()
     }
+companion object {
+    val USER_KEY = "USER_KEY"
+}
 
     private fun fetchUsers() {
         val ref = FirebaseDatabase.getInstance().getReference("/user")
@@ -42,14 +48,21 @@ class NewMessageActivity : AppCompatActivity() {
                         adapter.add(UserItem(user))
                     }
                 }
+                adapter.setOnItemClickListener { item, view ->
+                    val intent = Intent(view.context, ChatLogActivity::class.java)
+                    val userItem = item as UserItem
+//                    intent.putExtra(USER_KEY, userItem.user.username)
+                    intent.putExtra(USER_KEY, userItem.user)
+                    startActivity(intent)
+                    finish()
+                }
+
                 recyclerview_newmessage.adapter = adapter
             }
 
             override fun onCancelled(p0: DatabaseError) {
 
             }
-
-
         })
     }
 

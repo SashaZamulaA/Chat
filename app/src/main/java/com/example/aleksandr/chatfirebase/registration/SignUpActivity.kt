@@ -1,14 +1,16 @@
-package com.example.aleksandr.chatfirebase
+package com.example.aleksandr.chatfirebase.registration
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
+import com.example.aleksandr.chatfirebase.messages.LatestMessagesActivity
+import com.example.aleksandr.chatfirebase.R
+import com.example.aleksandr.chatfirebase.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -104,7 +106,11 @@ class SignUpActivity : AppCompatActivity() {
     private fun saveUserToFirebaseDatabase(profileImageUrl: String) {
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val ref = FirebaseDatabase.getInstance().getReference("/user/$uid")
-        val user = User(uid, userName_editText_registration.text.toString(), profileImageUrl)
+        val user = User(
+            uid,
+            userName_editText_registration.text.toString(),
+            profileImageUrl
+        )
         ref.setValue(user)
             .addOnSuccessListener {
                 Log.d("Register", "Finally we saved the user to Firebase Database")
@@ -116,7 +122,5 @@ class SignUpActivity : AppCompatActivity() {
     }
 }
 
-class User(val uid: String, val username: String, val profileImageUrl: String){
-    constructor(): this ("", "", "")
-}
+
 
